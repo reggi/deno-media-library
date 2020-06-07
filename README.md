@@ -6,6 +6,7 @@
 deno run --allow-read \
          --allow-write \
          --allow-run \
+         --allow-net \
          --unstable \
          https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts \
          --dir=<dir> \

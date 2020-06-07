@@ -10,6 +10,7 @@ Copies files to media-library directory. Will create folder structure and rename
 deno run --allow-read \\
          --allow-write \\
          --allow-run \\
+         --allow-net \\
          --unstable \\
          ${import.meta.url.replace(/^file:\/\//, '')} \\
          --dir=<dir> \\
