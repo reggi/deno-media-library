@@ -3,6 +3,12 @@
 
 Copies files to media-library directory. Will create folder structure and rename file based in earliest embeded file date.
 
+## Run bin (get this message)
+
+```bash
+deno run https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts
+```
+
 ## Install
 
 ```bash
