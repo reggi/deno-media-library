@@ -1,5 +1,12 @@
 # `deno-media-library`
 
+```
+deno run https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts
+```
+
+Will output the following help message:
+
+
 ## Running the script
 
 ```bash
