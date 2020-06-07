@@ -1,34 +1,37 @@
-# `deno-media-library`
 
-## Running the script
+# `media-library`
 
-```bash
-deno run --allow-read \
-         --allow-write \
-         --allow-run \
-         --allow-net \
-         --unstable \
-         https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts \
-         --dir=<dir> \
-         <files>
-```
+Copies files to media-library directory. Will create folder structure and rename file based in earliest embeded file date.
 
-## Installing this script
+## Install
 
 ```bash
 deno install \
-         -f \
-         --allow-read \
-         --allow-write \
-         --allow-run \
-         --allow-net \
-         --unstable \
-         --name=media-library \
-         https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts
+    -f \
+    --allow-read \
+    --allow-write \
+    --allow-run \
+    --allow-net \
+    --unstable \
+    --name=media-library \
+    https://raw.githubusercontent.com/reggi/deno-media-library/master/bin.ts
 ```
 
-## Running the installed script
+## Run
 
 ```bash
 media-library --dir=<dir> <files>
 ```
+
+## Generate Readme
+
+```bash
+deno run ./bin.ts --readme > README.md
+```
+
+## Help / Usage Doc
+
+```bash
+deno run ./bin.ts --help 
+```
+
