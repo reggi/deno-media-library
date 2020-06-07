@@ -22,7 +22,6 @@ deno install \
 ```bash
 media-library --dir=<dir> <files>
 ```
-<<<<<<< HEAD
 
 ## Generate Readme
 
@@ -36,5 +35,3 @@ deno run ./bin.ts --readme > README.md
 deno run ./bin.ts --help 
 ```
 
-=======
->>>>>>> 0958aa72a379d33a8855e7784efe2092cc4bbd9f
