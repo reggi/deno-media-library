@@ -4,19 +4,16 @@ import { moment } from "https://deno.land/x/moment/moment.ts";
 import { Hash } from "https://deno.land/x/checksum@1.2.0/mod.ts";
 import { green, blue } from "https://deno.land/std/fmt/colors.ts"
 import { parse as flagParse } from "https://deno.land/std/flags/mod.ts";
+let active = import.meta.main;
+const scriptName = 'media-library'
 
-const name = 'media-library'
-const flag = 'media-library'
-const parsedArgs = flagParse(Deno.args, { boolean: true });
-const active = import.meta.main
-
-const log = (head: string, msg: string = '') => { 
+function log (head: string, msg: string = '') { 
   if (active) { 
-    console.log(`${green(head)} ${blue(name)} ${msg}`)
+    console.log(`${green(head)} ${blue(scriptName)} ${msg}`)
   }
 }
 
-export async function moveFile (file: string, libraryDir: string): Promise<boolean> {
+async function moveFile (file: string, libraryDir: string): Promise<boolean> {
   const p = Deno.run({
     cmd: ["exiftool", "-json", file],
     stdout: "piped",
@@ -100,30 +97,13 @@ export async function moveFiles(files: string[], libraryDir: string): Promise<bo
   }));
 }
 
-const help = `
-media-library
-
-Copies files to media-library directory. Will create folder structure and rename file based in earliest embeded file date.
-
-deno run --allow-read \\
-         --allow-write \\
-         --allow-run \\
-         --unstable \\
-         ${import.meta.url} \\
-         --media-library=<dir> \\
-         <files>
-  
-`
-
-if (active) {
-  if (parsedArgs['help']) { 
-    console.log(help)
-    Deno.exit();
-  }
-
+export async function cli() {
+  active = true
+  const parsedArgs = flagParse(Deno.args, { boolean: true });
+  if (parsedArgs['help']) return Deno.exit();
   log('Executing');
-  const libraryDir = parsedArgs[flag];
-  if (!libraryDir) throw new Error(`${flag} flag is not set`)
+  const libraryDir = parsedArgs['dir'];
+  if (!libraryDir) throw new Error('dir flag is not set')
   const files = parsedArgs._.map(v => v.toString())
   await moveFiles(files, libraryDir)
 }
