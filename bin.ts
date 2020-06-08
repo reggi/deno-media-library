@@ -4,7 +4,8 @@ import * as path from "https://deno.land/std/path/mod.ts";
 const file = import.meta.url.replace(/^file:\/\//s, '')
 const repoName = path.basename(path.dirname(file))
 const fileName = path.basename(file)
-const githubGuess = `https://raw.githubusercontent.com/reggi/${repoName}/master/${fileName}`
+
+const githubGuess = file.match(/^http/) ? file : `https://raw.githubusercontent.com/reggi/${repoName}/master/${fileName}`
 
 const usage = `
 # \`media-library\`
